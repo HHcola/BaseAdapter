@@ -10,8 +10,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+class ViewHolder
+{
+    public ImageView img;
+    public TextView title;
+    public TextView info;
+}
+
 public class TestBaseAdapter extends BaseAdapter{
 	private LayoutInflater mInflater = null;
+	private ViewHolder holder;
 	
 	public TestBaseAdapter(Context context) {
 		this.mInflater = LayoutInflater.from(context);
@@ -39,15 +47,22 @@ public class TestBaseAdapter extends BaseAdapter{
 		// TODO Auto-generated method stub
         if(convertView == null)
         {
+    		holder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.list_item, null);
+            ImageView img = (ImageView)convertView.findViewById(R.id.img); 
+            TextView title = (TextView)convertView.findViewById(R.id.tv);
+            TextView info = (TextView)convertView.findViewById(R.id.info);
+            img.setImageResource(R.drawable.ic_launcher);
+            title.setText("Hello");
+            info.setText("world");
+            convertView.setTag(holder);
+        }else {
+            holder = (ViewHolder)convertView.getTag();
+            holder.img.setImageResource(R.drawable.ic_launcher);
+            holder.title.setText("Hello");
+            holder.info.setText("World");
         }
         
-        ImageView img = (ImageView)convertView.findViewById(R.id.img); 
-        TextView title = (TextView)convertView.findViewById(R.id.tv);
-        TextView info = (TextView)convertView.findViewById(R.id.info);
-        img.setImageResource(R.drawable.ic_launcher);
-        title.setText("Hello");
-        info.setText("world");
         
         return convertView;
 	}
