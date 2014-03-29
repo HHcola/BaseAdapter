@@ -4,5 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.baseadapter.MainActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame" >
+    
+         <ListView
+            android:id="@+id/list_content"
+            style="@style/style_app_manager_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+         
+    </FrameLayout>
 

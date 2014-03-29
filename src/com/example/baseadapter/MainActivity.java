@@ -1,5 +1,7 @@
 package com.example.baseadapter;
 
+import com.example.adapter.TestBaseAdapter;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -9,19 +11,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.os.Build;
 
 public class MainActivity extends Activity {
 
+	private ListView mListView;
+	private TestBaseAdapter mTestBaseAdapter;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
+		mListView = (ListView)findViewById(R.id.list_content);  // ListView is ViewGroup
+		mTestBaseAdapter = new TestBaseAdapter(this);
+		mListView.setAdapter(mTestBaseAdapter);
+		
+//		if (savedInstanceState == null) {
+//			getFragmentManager().beginTransaction()
+//					.add(R.id.container, new PlaceholderFragment()).commit();
+//		}
 	}
 
 	@Override
